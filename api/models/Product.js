@@ -7,7 +7,7 @@
 
 module.exports = {
   attributes: {
-    title: {
+    name: {
       type: 'string',
       required: true,
     },

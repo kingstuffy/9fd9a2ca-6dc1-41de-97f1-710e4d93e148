@@ -30,7 +30,6 @@ module.exports = {
    *                                                                         *
    **************************************************************************/
   datastores: {
-
     /***************************************************************************
      *                                                                          *
      * Configure your default production database.                              *
@@ -65,7 +64,7 @@ module.exports = {
      * https://sailsjs.com/docs/concepts/models-and-orm/model-settings#?migrate *
      *                                                                          *
      ***************************************************************************/
-    migrate: 'safe',
+    migrate: 'alter',
     dataEncryptionKeys: {
       default: process.env.DATA_ENCRYPTION_KEYS
     },
@@ -80,6 +79,21 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     // cascadeOnDestroy: false,
+  },
+
+
+  /**************************************************************************
+   *                                                                         *
+   * Always disable "shortcut" blueprint routes.                             *
+   *                                                                         *
+   * > You'll also want to disable any other blueprint routes if you are not *
+   * > actually using them (e.g. "actions" and "rest") -- but you can do     *
+   * > that in `config/blueprints.js`, since you'll want to disable them in  *
+   * > all environments (not just in production.)                            *
+   *                                                                         *
+   ***************************************************************************/
+  blueprints: {
+    shortcuts: false,
   },
 
 
@@ -111,7 +125,9 @@ module.exports = {
       allRoutes: true,
       allowOrigins: '*',
       allowCredentials: false
-    }
+    },
+
+    // csrf: false
 
   },
 
@@ -128,6 +144,7 @@ module.exports = {
    ***************************************************************************/
   session: {
     // secret: process.env.SESSION_SECRET,
+
     /***************************************************************************
      *                                                                          *
      * Production session store configuration.                                  *
@@ -179,7 +196,7 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     cookie: {
-      secure: true,
+      // secure: true,
       maxAge: 24 * 60 * 60 * 1000,  // 24 hours
     },
 
@@ -208,7 +225,8 @@ module.exports = {
      *                                                                          *
      ***************************************************************************/
     onlyAllowOrigins: [
-      'https://api.c3life.org',
+      'http://localhost:' + process.env.PORT,
+      'https://c3life.localtunnel.me'
     ],
 
 
@@ -247,7 +265,7 @@ module.exports = {
    *                                                                         *
    ***************************************************************************/
   log: {
-    level: 'debug'
+    level: 'info'
   },
 
 
@@ -276,7 +294,7 @@ module.exports = {
      * (https://sailsjs.com/config/http)                                        *
      *                                                                          *
      ***************************************************************************/
-    trustProxy: true,
+    // trustProxy: true,
 
   },
 
@@ -290,7 +308,7 @@ module.exports = {
    * this, just try deploying without setting it and see if it works.)       *
    *                                                                         *
    ***************************************************************************/
-  // port: 80,
+  port: process.env.PORT,
 
 
   /**************************************************************************
