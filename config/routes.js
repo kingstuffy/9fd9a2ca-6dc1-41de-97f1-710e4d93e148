@@ -38,5 +38,11 @@ module.exports.routes = {
   /*
    * Product Routes
    */
-  'GET /product/:id': 'product/read'
+  'GET /product/:id': 'product/read',
+
+
+  /*
+   * Review Routes
+   */
+  'POST /review': 'review'
 };
