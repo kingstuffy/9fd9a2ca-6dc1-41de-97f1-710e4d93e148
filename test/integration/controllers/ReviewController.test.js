@@ -41,6 +41,26 @@ describe('ReviewController', () => {
       response.body.err.should.have.property('code', 'E_MISSING_OR_INVALID_PARAMS');
     });
 
+    it('should return 400: validation error, min rating of 1', async () => {
+      const newReview = reviewProvider.getRecord({ rating: 0 });
+      const response = await request(sails.hooks.http.app)
+        .post('/review')
+        .send(newReview)
+        .expect(400);
+      response.body.should.have.property('err');
+      response.body.err.should.have.property('code', 'E_MISSING_OR_INVALID_PARAMS');
+    });
+
+    it('should return 400: validation error, max rating of 5', async () => {
+      const newReview = reviewProvider.getRecord({ rating: 6 });
+      const response = await request(sails.hooks.http.app)
+        .post('/review')
+        .send(newReview)
+        .expect(400);
+      response.body.should.have.property('err');
+      response.body.err.should.have.property('code', 'E_MISSING_OR_INVALID_PARAMS');
+    });
+
     it('should return 400: validation error, invalid product', async () => {
       const newReview = reviewProvider.getRecord({ product: chance.guid() });
       await request(sails.hooks.http.app)
