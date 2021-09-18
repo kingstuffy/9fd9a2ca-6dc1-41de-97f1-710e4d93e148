@@ -44,5 +44,5 @@ module.exports.routes = {
   /*
    * Review Routes
    */
-  'POST /review': 'review'
+  'POST /review': 'review/create'
 };

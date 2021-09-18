@@ -15,10 +15,12 @@ module.exports.bootstrap = async function () {
     slug: 'default'
   };
 
-  try {
-    // Finds or create default product that can be fetched by the UI
-    await Product.findOrCreate({ slug: defaultProduct.slug }, defaultProduct);
-  } catch (e) {
-    console.error('Unable to create default product', e);
+  if (process.env.NODE_ENV !== 'test') {
+    try {
+      // Finds or create default product that can be fetched by the UI
+      await Product.findOrCreate({ slug: defaultProduct.slug }, defaultProduct);
+    } catch (e) {
+      console.error('Unable to create default product', e);
+    }
   }
 };

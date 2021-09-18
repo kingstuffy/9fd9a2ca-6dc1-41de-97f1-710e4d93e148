@@ -47,13 +47,6 @@ module.exports = {
       extendedDescription: 'If this request was sent from a graphical user interface, the request ' +
         'parameters should have been validated/coerced _before_ they were sent.'
     },
-    notFound: {
-      statusCode: 404,
-      description: 'Product not found',
-      outputExample: {
-        'message': 'Product not found',
-      }
-    },
   },
   fn: async function (inputs, exits) {
     const product = await Product.findOne({
@@ -61,7 +54,7 @@ module.exports = {
       isDeleted: false
     });
     if (!product) {
-      return exits.notFound({ message: 'Product not found' });
+      return exits.invalid({ message: 'Product not found' });
     }
 
     const review = await Review.create({ ...inputs, product: product.id })

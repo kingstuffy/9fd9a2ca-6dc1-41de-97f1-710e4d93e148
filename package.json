@@ -8,6 +8,7 @@
     "@sailshq/connect-redis": "^3.2.1",
     "@sailshq/lodash": "^3.10.3",
     "@sailshq/socket.io-redis": "^5.2.0",
+    "bluebird": "^3.7.2",
     "grunt": "1.0.4",
     "sails": "^1.5.0",
     "sails-hook-grunt": "^4.0.0",
@@ -16,16 +17,21 @@
     "sails-mongo": "^2.0.0"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
+    "chance": "^1.1.8",
     "dotenv": "^10.0.0",
     "eslint": "5.16.0",
-    "nodemon": "^2.0.12"
+    "mocha": "^9.1.1",
+    "nodemon": "^2.0.12",
+    "sails-memory": "^0.10.7",
+    "supertest": "^6.1.6"
   },
   "scripts": {
     "start": "NODE_ENV=production node app.js",
     "dev": "NODE_ENV=development ./node_modules/nodemon/bin/nodemon.js -r dotenv/config app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "./node_modules/eslint/bin/eslint.js . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your .js files look good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "NODE_ENV=test node ./node_modules/mocha/bin/mocha test/lifecycle.test.js 'test/integration/**/*.test.js'"
   },
   "main": "app.js",
   "repository": {
