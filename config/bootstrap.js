@@ -9,22 +9,16 @@
  * https://sailsjs.com/config/bootstrap
  */
 
-module.exports.bootstrap = async function() {
+module.exports.bootstrap = async function () {
+  const defaultProduct = {
+    name: 'The Minimalist Entrepreneur',
+    slug: 'default'
+  };
 
-  // By convention, this is a good place to set up fake data during development.
-  //
-  // For example:
-  // ```
-  // // Set up fake development data (or if we already have some, avast)
-  // if (await User.count() > 0) {
-  //   return;
-  // }
-  //
-  // await User.createEach([
-  //   { emailAddress: 'ry@example.com', fullName: 'Ryan Dahl', },
-  //   { emailAddress: 'rachael@example.com', fullName: 'Rachael Shaw', },
-  //   // etc.
-  // ]);
-  // ```
-
+  try {
+    // Finds or create default product that can be fetched by the UI
+    await Product.findOrCreate({ slug: defaultProduct.slug }, defaultProduct);
+  } catch (e) {
+    console.error('Unable to create default product', e);
+  }
 };
