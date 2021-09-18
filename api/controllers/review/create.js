@@ -12,6 +12,8 @@ module.exports = {
       type: 'number',
       friendlyName: 'Rating',
       description: 'Review\'s rating',
+      min: 1,
+      max: 5,
       example: 4,
       required: true,
     },

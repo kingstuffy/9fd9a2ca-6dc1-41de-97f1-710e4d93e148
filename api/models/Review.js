@@ -12,6 +12,8 @@ module.exports = {
     },
     rating: {
       type: 'number',
+      min: 1,
+      max: 5,
       required: true,
     },
     product: {
