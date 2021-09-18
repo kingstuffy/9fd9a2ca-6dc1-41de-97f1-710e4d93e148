@@ -1,7 +1,10 @@
+const mathjs = require('mathjs');
 const { createDbRecord, clearDb } = require('../../utils/db');
 const productProvider = require('../../fixtures/product');
 const reviewProvider = require('../../fixtures/review');
 const thisModel = 'product';
+
+const models = ['product', 'review'];
 
 describe('ProductController', () => {
   afterEach(clearDb(models));
@@ -36,9 +39,11 @@ describe('ProductController', () => {
       const noOfReviews = chance.natural({ min: 1, max: 20 });
       const newProduct = await createDbRecord(thisModel, productProvider.getRecord());
 
+      const reviews = reviewProvider.getRecord({ product: newProduct.id }, noOfReviews);
+      const averageRating = mathjs.mean(reviews.map(({ rating }) => rating));
       await createDbRecord(
         'review',
-        reviewProvider.getRecord({ product: newProduct.id }, noOfReviews)
+        reviews
       );
 
       const response = await request(sails.hooks.http.app)
@@ -46,6 +51,7 @@ describe('ProductController', () => {
         .expect(200);
       response.body.should.have.property('data');
       response.body.data.should.have.property('id', newProduct.id);
+      response.body.data.should.have.property('averageRating', averageRating);
       response.body.data.should.have.property('reviews');
       response.body.data.reviews.should.have.lengthOf(noOfReviews);
     });
