@@ -30,7 +30,15 @@ module.exports = {
       description: 'Created review',
       outputExample: {
         'message': 'Review created successfully',
-        'data': {}
+        'data': {
+          'createdAt': 1631994010280,
+          'updatedAt': 1631994010280,
+          'id': '6146409a56d629467ef3fa34',
+          'text': 'Some ratings text',
+          'rating': 4,
+          'isDeleted': false,
+          'product': '614637af8e3f5b41e0136155'
+        }
       }
     },
     invalid: {

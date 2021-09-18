@@ -20,5 +20,9 @@ module.exports = {
       type: 'boolean',
       defaultsTo: false
     },
+    reviews: {
+      collection: 'review',
+      via: 'product'
+    }
   },
 };
