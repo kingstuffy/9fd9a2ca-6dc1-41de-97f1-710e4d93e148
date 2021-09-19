@@ -1,3 +1,5 @@
+const config = sails.config.custom.pushNotifications;
+
 module.exports = {
   friendlyName: 'Create review',
   description: 'Creates review',
@@ -69,6 +71,7 @@ module.exports = {
       .fetch();
 
     const averageRating = await sails.helpers.product.getAverageRating(product.id);
+    sails.helpers.pushNotifications.trigger(config.newReviewChannel, 'new-review', { averageRating });
 
     const response = {
       message: 'Review created successfully',

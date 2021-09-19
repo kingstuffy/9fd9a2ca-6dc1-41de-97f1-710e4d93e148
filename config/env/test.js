@@ -40,5 +40,16 @@ module.exports = {
   },
 
   // port: 80,
-  custom: {},
+  custom: {
+    pushNotifications: {
+      newReviewChannel: 'test',
+    },
+    pusher: {
+      appId: '',
+      key: '',
+      secret: '',
+      cluster: '',
+      encrypted: true,
+    },
+  },
 };

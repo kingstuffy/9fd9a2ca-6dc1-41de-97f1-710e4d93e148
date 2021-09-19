@@ -339,5 +339,16 @@ module.exports = {
    * > See config/custom.js for more info on how to configure these options. *
    *                                                                         *
    ***************************************************************************/
-  custom: {},
+  custom: {
+    pushNotifications: {
+      newReviewChannel: process.env.PN_NEW_REVIEW_CHANNEL,
+    },
+    pusher: {
+      appId: process.env.PUSHER_APP_ID,
+      key: process.env.PUSHER_KEY,
+      secret: process.env.PUSHER_SECRET,
+      cluster: process.env.PUSHER_CLUSTER,
+      encrypted: true,
+    },
+  },
 };
