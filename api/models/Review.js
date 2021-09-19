@@ -12,7 +12,7 @@ module.exports = {
     },
     rating: {
       type: 'number',
-      min: 1,
+      min: 0.5,
       max: 5,
       required: true,
     },
