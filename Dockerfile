@@ -8,9 +8,9 @@ RUN apk add -U tzdata \
 
 WORKDIR /www
 
-ADD package.json package-lock.json /www/
-RUN npm install \
-	&& npm cache clean;
+ADD package.json yarn.lock /www/
+RUN yarn install \
+	&& yarn cache clean;
 
 ADD . /www
 
@@ -42,4 +42,4 @@ ENV PUSHER_CLUSTER=${PUSHER_CLUSTER}
 ARG PN_NEW_REVIEW_CHANNEL
 ENV PN_NEW_REVIEW_CHANNEL=${PN_NEW_REVIEW_CHANNEL}
 
-CMD ["npm", "start"]
+CMD ["yarn", "start"]
