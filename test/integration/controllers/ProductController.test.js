@@ -40,7 +40,7 @@ describe('ProductController', () => {
       const newProduct = await createDbRecord(thisModel, productProvider.getRecord());
 
       const reviews = reviewProvider.getRecord({ product: newProduct.id }, noOfReviews);
-      const averageRating = mathjs.mean(reviews.map(({ rating }) => rating));
+      const averageRating = parseFloat(mathjs.mean(reviews.map(({ rating }) => rating)).toFixed(1));
       await createDbRecord(
         'review',
         reviews

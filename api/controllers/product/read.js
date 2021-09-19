@@ -59,10 +59,7 @@ module.exports = {
       return exits.notFound({ message: 'Product not found' });
     }
 
-    const averageRating = await Review.avg('rating')
-      .where({
-        product: product.id
-      });
+    const averageRating = await sails.helpers.product.getAverageRating(product.id);
 
     const response = {
       message: 'Product retrieved successfully',

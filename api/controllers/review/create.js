@@ -65,9 +65,11 @@ module.exports = {
       ))
       .fetch();
 
+    const averageRating = await sails.helpers.product.getAverageRating(product.id);
+
     const response = {
       message: 'Review created successfully',
-      data: review,
+      data: { averageRating, review },
     };
     return exits.success(response);
   }

@@ -17,7 +17,8 @@ describe('ReviewController', () => {
         .expect(201);
 
       response.body.should.have.property('data');
-      response.body.data.should.have.property('text', newReview.text);
+      response.body.data.should.have.property('review');
+      response.body.data.review.should.have.property('text', newReview.text);
     });
 
     it('should create review with product slug', async () => {
@@ -28,7 +29,8 @@ describe('ReviewController', () => {
         .send(newReview)
         .expect(201);
       response.body.should.have.property('data');
-      response.body.data.should.have.property('text', newReview.text);
+      response.body.data.should.have.property('review');
+      response.body.data.review.should.have.property('text', newReview.text);
     });
 
     it('should return 400: validation error, missing rating', async () => {
