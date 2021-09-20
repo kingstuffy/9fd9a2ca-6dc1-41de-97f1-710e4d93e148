@@ -8,7 +8,14 @@ describe('ReviewController', () => {
   afterEach(clearDb(models));
 
   describe('#create [POST /review]', () => {
-    it('should create review with product ID', async () => {
+    after('Restore notifications helper', (done) => {
+      sails.helpers.pushNotifications.trigger.restore();
+      done();
+    });
+
+    it('should create review with product ID and send notifications', async () => {
+      const notificationsStub = sinon.stub(sails.helpers.pushNotifications, 'trigger');
+
       const product = await createDbRecord('product', productProvider.getRecord());
       const newReview = reviewProvider.getRecord({ product: product.id });
       const response = await request(sails.hooks.http.app)
@@ -19,6 +26,11 @@ describe('ReviewController', () => {
       response.body.should.have.property('data');
       response.body.data.should.have.property('review');
       response.body.data.review.should.have.property('text', newReview.text);
+
+      notificationsStub.firstCall.args.should.have.lengthOf(3);
+      const [channel, event] = notificationsStub.firstCall.args;
+      channel.should.equal('test');
+      event.should.equal('new-review');
     });
 
     it('should create review with product slug', async () => {

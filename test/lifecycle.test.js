@@ -6,6 +6,7 @@ global.expect = chai.expect;
 global.assert = chai.assert;
 global.should = chai.should();
 global.request = require('supertest');
+global.sinon = require('sinon');
 
 before((done) => {
   sails.lift({}, (err) => {
