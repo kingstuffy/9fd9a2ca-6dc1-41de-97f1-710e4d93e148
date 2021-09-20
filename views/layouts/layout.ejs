@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>New Sails App</title>
+
+<head>
+    <title>Gumroad Product API</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <%/* If you want to discourage search engines from indexing this site, uncomment the following line: */%>
-    <%/* <meta name="robots" content="noindex"> */%>
 
 
     <!--
@@ -30,18 +28,61 @@
             + Import stylesheets from other directories
             + Use a different or additional preprocessor, like SASS, SCSS or Stylus
     -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <style type="text/css">
+        body {
+            background-color: #183b56;
+            color: white;
+            text-align: center;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            line-height: 1.42857143;
+            color: #333;
+        }
 
+        section {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%)
+        }
+
+        section a {
+            color: #183b56;
+            text-decoration: none;
+        }
+
+        .section hr {
+            margin: 7px 0;
+            border: 0;
+            border-top: 1px solid #eee;
+            box-sizing: content-box;
+            height: 0;
+        }
+
+        .centered {
+            text-align: center;
+            text-transform: uppercase;
+            text-align: center;
+            color: #183b56;
+            margin: 20px auto;
+            background-color: white;
+            padding: 10px;
+            border-radius: 7px;
+        }
+    </style>
     <!--STYLES-->
     <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
-  </head>
+</head>
 
-  <body>
+<body>
     <%- body %>
 
 
 
-    <!--
+        <!--
         Client-side Templates
         ========================
 
@@ -62,11 +103,12 @@
               stringfile before they're served.
     -->
 
-    <!--TEMPLATES-->
-    <!--TEMPLATES END-->
+        <!--TEMPLATES-->
+
+        <!--TEMPLATES END-->
 
 
-    <!--
+        <!--
         Server-side View Locals
         ========================
 
@@ -82,7 +124,7 @@
     -->
 
 
-    <!--
+        <!--
 
       Client-side Javascript
       ========================
@@ -105,8 +147,9 @@
 
     -->
 
-    <!--SCRIPTS-->
-    <script src="/dependencies/sails.io.js"></script>
-    <!--SCRIPTS END-->
-  </body>
+        <!--SCRIPTS-->
+        <script src="/dependencies/sails.io.js"></script>
+        <!--SCRIPTS END-->
+</body>
+
 </html>

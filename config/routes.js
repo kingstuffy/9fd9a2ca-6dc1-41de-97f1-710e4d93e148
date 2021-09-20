@@ -8,6 +8,8 @@
  * https://sailsjs.com/anatomy/config/routes-js
  */
 
+const Package = require('../package.json');
+
 module.exports.routes = {
 
   /***************************************************************************
@@ -19,7 +21,18 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
+
+  '/': {
+    view: 'pages/homepage',
+    locals: {
+      api: {
+        title: 'Gumroad Product',
+        name: 'gumroad-product-api',
+        version: Package.version,
+        docs: 'https://documenter.getpostman.com/view/914502/UUxtGBMa'
+      }
+    }
+  },
 
   'GET /health': 'health/index',
 
