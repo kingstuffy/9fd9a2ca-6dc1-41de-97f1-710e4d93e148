@@ -32,7 +32,7 @@ yarn install
 ```shell
   yarn dev
 ```
-* Demo: [Product Page](https://gumroad-product-api.apps.stuffmeisters.com)
+* Demo: [API](https://gumroad-product-api.apps.stuffmeisters.com)
 
 ## Testing
 * Tests are written using Cypress.
