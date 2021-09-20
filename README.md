@@ -5,7 +5,7 @@
 * [Build Project](#build-project)
 * [Starting The App](#starting-the-app)
 * [Testing](#testing)
-* [Api Documentation](#api-documentation)
+* [API Documentation](#api-documentation)
 
 ## Summary
 Create an app that is a single product page, and allow anyone to submit written reviews along with a 5-star rating
@@ -41,5 +41,5 @@ yarn install
 yarn test
 ```
 
-## Api Documentation
+## API Documentation
 * https://documenter.getpostman.com/view/914502/UUxtGBMa
